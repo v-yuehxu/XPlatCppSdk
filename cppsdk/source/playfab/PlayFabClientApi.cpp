@@ -5,6 +5,7 @@
 #include <playfab/PlayFabClientApi.h>
 #include <playfab/PlayFabHttp.h>
 #include <playfab/PlayFabSettings.h>
+#include <playfab/PlayFabPluginManager.h>
 
 namespace PlayFab
 {
@@ -976,7 +977,8 @@ namespace PlayFab
     )
     {
 
-        IPlayFabHttp& http = IPlayFabHttp::Get();
+        //IPlayFabHttp& http = IPlayFabHttp::Get();
+        IPlayFabHttp& http = PlayFab::PlayFabPluginManager::GetPlugin<PlayFab::IPlayFabHttp>(PlayFab::PlayFabPluginContract::PlayFab_Transport);
         const auto requestJson = request.ToJson();
         http.AddRequest("/Client/GetPlayerProfile", "X-Authorization", PlayFabSettings::clientSessionTicket, requestJson, OnGetPlayerProfileResult, SharedVoidPointer((callback == nullptr) ? nullptr : new ProcessApiCallback<GetPlayerProfileResult>(callback)), errorCallback, customData);
     }
@@ -2064,7 +2066,8 @@ namespace PlayFab
     {
         if (PlayFabSettings::titleId.length() > 0) request.TitleId = PlayFabSettings::titleId;
 
-        IPlayFabHttp& http = IPlayFabHttp::Get();
+        //IPlayFabHttp& http = IPlayFabHttp::Get();
+        IPlayFabHttp& http = PlayFab::PlayFabPluginManager::GetPlugin<PlayFab::IPlayFabHttp>(PlayFab::PlayFabPluginContract::PlayFab_Transport);
         const auto requestJson = request.ToJson();
         http.AddRequest("/Client/LoginWithCustomID", "", "", requestJson, OnLoginWithCustomIDResult, SharedVoidPointer((callback == nullptr) ? nullptr : new ProcessApiCallback<LoginResult>(callback)), errorCallback, customData);
     }

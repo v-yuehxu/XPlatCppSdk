@@ -1,6 +1,7 @@
 #pragma once
 
 #include <playfab/PlayFabError.h>
+#include <playfab/PlayFabPluginManager.h>
 #include <functional>
 #include <memory>
 #include <thread>
@@ -49,7 +50,7 @@ namespace PlayFab
     /// <summary>
     /// Provides an interface and a static instance for https implementations
     /// </summary>
-    class IPlayFabHttp
+    class IPlayFabHttp : public IPlayFabTransportPlugin
     {
     public:
         static IPlayFabHttp& Get();
@@ -67,6 +68,8 @@ namespace PlayFab
     /// </summary>
     class PlayFabHttp : public IPlayFabHttp
     {
+        friend class PlayFabPluginManager;
+
     public:
         static void MakeInstance();
         ~PlayFabHttp() override;
