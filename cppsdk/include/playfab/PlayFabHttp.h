@@ -18,34 +18,34 @@
 
 namespace PlayFab
 {
-    struct CallRequestContainer;
-    typedef void(*RequestCompleteCallback)(CallRequestContainer& reqContainer);
-    typedef std::shared_ptr<void> SharedVoidPointer;
+    //struct CallRequestContainer;
+    //typedef void(*RequestCompleteCallback)(CallRequestContainer& reqContainer);
+    //typedef std::shared_ptr<void> SharedVoidPointer;
 
-    /// <summary>
-    /// Internal PlayFabHttp container for each api call
-    /// </summary>
-    struct CallRequestContainer
-    {
-        // I own these objects, I must always destroy them
-        CURL* curlHandle;
-        curl_slist* curlHttpHeaders;
-        // I never own this, I can never destroy it
-        void* customData;
+    ///// <summary>
+    ///// Internal PlayFabHttp container for each api call
+    ///// </summary>
+    //struct CallRequestContainer
+    //{
+    //    // I own these objects, I must always destroy them
+    //    CURL* curlHandle;
+    //    curl_slist* curlHttpHeaders;
+    //    // I never own this, I can never destroy it
+    //    void* customData;
 
-        bool finished;
-        std::string authKey;
-        std::string authValue;
-        std::string responseString;
-        Json::Value responseJson = Json::Value::null;
-        PlayFabError errorWrapper;
-        RequestCompleteCallback internalCallback;
-        SharedVoidPointer successCallback;
-        ErrorCallback errorCallback;
+    //    bool finished;
+    //    std::string authKey;
+    //    std::string authValue;
+    //    std::string responseString;
+    //    Json::Value responseJson = Json::Value::null;
+    //    PlayFabError errorWrapper;
+    //    RequestCompleteCallback internalCallback;
+    //    SharedVoidPointer successCallback;
+    //    ErrorCallback errorCallback;
 
-        CallRequestContainer();
-        ~CallRequestContainer();
-    };
+    //    CallRequestContainer();
+    //    ~CallRequestContainer();
+    //};
 
     /// <summary>
     /// Provides an interface and a static instance for https implementations
