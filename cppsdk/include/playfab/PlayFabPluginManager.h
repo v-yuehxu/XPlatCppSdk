@@ -53,17 +53,17 @@ namespace PlayFab
         // Gets a plugin.
         // If a plugin with specified contract and optional instance name does not exist, it will create a new one.
         template <typename T>
-        static T& GetPlugin(const PlayFabPluginContract contract, const std::string instanceName = "") 
+        static T& GetPlugin(const PlayFabPluginContract& contract, const std::string& instanceName = "") 
         { 
             return (T&)(instance().GetPluginInternal(contract, instanceName)); 
         }
 
         // Sets a custom plugin.
         // If a plugin with specified contract and optional instance name already exists, it will be replaced with specified instance.
-        static void SetPlugin(IPlayFabPlugin& plugin, const PlayFabPluginContract contract, const std::string instanceName = "");
+        static void SetPlugin(IPlayFabPlugin& plugin, const PlayFabPluginContract& contract, const std::string& instanceName = "");
     private:
-        IPlayFabPlugin& GetPluginInternal(const PlayFabPluginContract contract, const std::string instanceName);
-        void SetPluginInternal(IPlayFabPlugin& plugin, const PlayFabPluginContract contract, const std::string instanceName);
+        IPlayFabPlugin& GetPluginInternal(const PlayFabPluginContract& contract, const std::string& instanceName);
+        void SetPluginInternal(IPlayFabPlugin& plugin, const PlayFabPluginContract& contract, const std::string& instanceName);
 
         IPlayFabPlugin* CreatePlayFabSerializerPlugin();
         IPlayFabPlugin* CreatePlayFabTransportPlugin();
@@ -72,6 +72,6 @@ namespace PlayFab
         PlayFabPluginManager() = default;
         ~PlayFabPluginManager() = default;
 
-        std::map<const std::pair<const PlayFabPluginContract, const std::string>, IPlayFabPlugin&> plugins;
+        std::map<const std::pair<const PlayFabPluginContract, const std::string>, IPlayFabPlugin&> mPlugins;
     };
 }

@@ -68,8 +68,6 @@ namespace PlayFab
     /// </summary>
     class PlayFabHttp : public IPlayFabHttp
     {
-        friend class PlayFabPluginManager;
-
     public:
         static void MakeInstance();
         ~PlayFabHttp() override;
