@@ -39,13 +39,13 @@ namespace PlayFab
         static const std::string AD_TYPE_ANDROID_ID;
 
         static void ForgetAllCredentials();
+
+        static std::string GetUrl(const std::string& urlPath);
+
 #endif
     private:
         PlayFabSettings(); // Private constructor, static class should never have an instance
         PlayFabSettings(const PlayFabSettings& other); // Private copy-constructor, static class should never have an instance
-
-        friend PlayFabHttp;
-        static std::string GetUrl(const std::string& urlPath);
 
         static std::string serverURL;
     };
