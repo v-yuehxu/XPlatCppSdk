@@ -35,5 +35,4 @@
 #include <json/json.h>
 #include <json/reader.h>
 #include <json/value.h>
-#include <curl/curl.h>
 #endif

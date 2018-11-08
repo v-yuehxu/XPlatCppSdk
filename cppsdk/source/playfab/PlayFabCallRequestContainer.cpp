@@ -33,7 +33,7 @@ namespace PlayFab
 
     CallRequestContainer::~CallRequestContainer()
     {
-        curl_easy_reset(curlHandle);
-        curlHttpHeaders = nullptr;
+        // curl_easy_reset(curlHandle);
+        // curlHttpHeaders = nullptr;
     }
 }

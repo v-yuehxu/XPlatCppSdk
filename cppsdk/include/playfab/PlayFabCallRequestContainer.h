@@ -25,8 +25,8 @@ namespace PlayFab
         // TODO: clean up these public variables with setters/getters when you have the chance.
 
         // I own these objects, I must always destroy them
-        CURL* curlHandle;
-        curl_slist* curlHttpHeaders;
+        /*CURL* curlHandle;
+        curl_slist* curlHttpHeaders;*/
 
         bool finished;
         std::string responseString;

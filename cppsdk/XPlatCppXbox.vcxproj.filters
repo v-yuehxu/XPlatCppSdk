@@ -140,9 +140,6 @@
     <ClInclude Include="include\playfab\QoS\XPlatSocket.h">
       <Filter>Header Files\playfab\QoS</Filter>
     </ClInclude>
-    <ClInclude Include="include\playfab\PlayFabLibHttpClient.h">
-      <Filter>Header Files\playfab</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -216,9 +213,6 @@
     </ClCompile>
     <ClCompile Include="source\playfab\QoS\XPlatSocket.cpp">
       <Filter>Source Files\playfab\QoS</Filter>
-    </ClCompile>
-    <ClCompile Include="source\playfab\PlayFabLibHttpClient.cpp">
-      <Filter>Source Files\playfab</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

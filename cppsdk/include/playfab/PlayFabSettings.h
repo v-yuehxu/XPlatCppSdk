@@ -1,6 +1,6 @@
 #pragma once
 
-#include <playfab/PlayFabHttp.h>
+#include <playfab/PlayFabLibHttpClient.h>
 
 namespace PlayFab
 {
@@ -47,7 +47,7 @@ namespace PlayFab
         PlayFabSettings(); // Private constructor, static class should never have an instance
         PlayFabSettings(const PlayFabSettings& other); // Private copy-constructor, static class should never have an instance
 
-        friend PlayFabHttp;
+        friend PlayFabLibHttpClient;
         static std::string GetUrl(const std::string& urlPath, const std::map<std::string, std::string>& getParams);
     };
 }
