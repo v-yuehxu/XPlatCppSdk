@@ -1,7 +1,7 @@
 #include <stdafx.h>
 
 #include <playfab/PlayFabPluginManager.h>
-#include <playfab/PlayFabHttp.h>
+#include <playfab/PlayFabLibHttpClient.h>
 
 namespace PlayFab
 {
@@ -77,6 +77,6 @@ namespace PlayFab
 
     std::shared_ptr<IPlayFabPlugin> PlayFabPluginManager::CreatePlayFabTransportPlugin()
     {
-        return IPlayFabHttp::GetPtr();
+        return IPlayFabLibHttpClient::GetPtr();
     }
 }

@@ -3,7 +3,7 @@
 #ifndef DISABLE_PLAYFABENTITY_API
 
 #include <playfab/PlayFabCallRequestContainer.h>
-#include <playfab/PlayFabHttp.h>
+#include <playfab/PlayFabLibHttpClient.h>
 #include <playfab/PlayFabProfilesDataModels.h>
 
 namespace PlayFab

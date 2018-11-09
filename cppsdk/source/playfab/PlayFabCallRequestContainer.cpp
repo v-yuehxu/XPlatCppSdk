@@ -10,8 +10,6 @@ namespace PlayFab
         CallRequestContainerCallback callback,
         void* customData) :
         CallRequestContainerBase(url, headers, requestBody, callback, customData),
-        curlHandle(nullptr),
-        curlHttpHeaders(nullptr),
         finished(false),
         responseString(""),
         responseJson(Json::Value::null),
@@ -29,11 +27,5 @@ namespace PlayFab
         {
             errorWrapper.Request = request;
         }
-    }
-
-    CallRequestContainer::~CallRequestContainer()
-    {
-        // curl_easy_reset(curlHandle);
-        // curlHttpHeaders = nullptr;
     }
 }

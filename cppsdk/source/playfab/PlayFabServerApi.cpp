@@ -3,7 +3,7 @@
 #ifdef ENABLE_PLAYFABSERVER_API
 
 #include <playfab/PlayFabServerApi.h>
-#include <playfab/PlayFabHttp.h>
+#include <playfab/PlayFabLibHttpClient.h>
 #include <playfab/PlayFabSettings.h>
 #include <playfab/PlayFabError.h>
 
@@ -15,7 +15,7 @@ namespace PlayFab
 
     size_t PlayFabServerAPI::Update()
     {
-        return PlayFabHttp::Get().Update();
+        return PlayFabLibHttpClient::Get().Update();
     }
 
     void PlayFabServerAPI::ForgetAllCredentials()

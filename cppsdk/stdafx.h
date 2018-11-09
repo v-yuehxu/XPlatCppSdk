@@ -25,7 +25,6 @@
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/value.h>
-#include <curl/curl.h>
 #include <stdio.h>
 #endif
 

@@ -3,7 +3,7 @@
 #ifndef DISABLE_PLAYFABENTITY_API
 
 #include <playfab/PlayFabCloudScriptApi.h>
-#include <playfab/PlayFabHttp.h>
+#include <playfab/PlayFabLibHttpClient.h>
 #include <playfab/PlayFabSettings.h>
 #include <playfab/PlayFabError.h>
 
@@ -15,7 +15,7 @@ namespace PlayFab
 
     size_t PlayFabCloudScriptAPI::Update()
     {
-        return PlayFabHttp::Get().Update();
+        return PlayFabLibHttpClient::Get().Update();
     }
 
     void PlayFabCloudScriptAPI::ForgetAllCredentials()

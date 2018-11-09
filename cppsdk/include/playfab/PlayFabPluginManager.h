@@ -4,9 +4,6 @@
 #include <playfab/PlayFabError.h>
 #include <unordered_map>
 
-// Intellisense-only includes
-#include <curl/curl.h>
-
 namespace PlayFab
 {
     /// <summary>
