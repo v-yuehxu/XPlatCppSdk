@@ -130,7 +130,7 @@ namespace PlayFab
     {
         std::vector<std::string> header;
         header.clear();
-        header.push_back(nullptr);
+        //header.push_back(nullptr);
         header.push_back("Accept: application/json");
         header.push_back("Content-Type: application/json; charset=utf-8");
         header.push_back(("X-PlayFabSDK: " + PlayFabSettings::versionString).c_str());

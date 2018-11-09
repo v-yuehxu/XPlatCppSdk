@@ -65,7 +65,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/Zc:__cplusplus /bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -185,8 +185,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Externals\libHttpClient\Build\libcrypto.141.Win32\libcrypto.141.Win32.vcxproj">
+      <Project>{c043de35-beed-4fe1-b9d2-b15cb051cc3c}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Externals\libHttpClient\Build\libHttpClient.141.Win32.C\libHttpClient.141.Win32.C.vcxproj">
       <Project>{cf37beb2-a66a-42ba-b348-1f07566f4865}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\libHttpClient\Build\libssl.141.Win32\libssl.141.Win32.vcxproj">
+      <Project>{cf4c3985-3f37-45b6-95f7-7602c53f1f21}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
