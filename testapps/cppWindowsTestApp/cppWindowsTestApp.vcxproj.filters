@@ -29,6 +29,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\..\libHttpClient.props" />
   </ItemGroup>
 </Project>
