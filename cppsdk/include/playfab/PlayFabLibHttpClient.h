@@ -15,6 +15,7 @@
 #ifdef _WIN32
 #include <json/value.h>
 #endif
+
 #include <httpClient/httpClient.h>
 
 namespace PlayFab

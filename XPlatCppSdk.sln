@@ -25,7 +25,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcrypto.141.Win32", "Exte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libssl.141.Win32", "Externals\libHttpClient\Build\libssl.141.Win32\libssl.141.Win32.vcxproj", "{CF4C3985-3F37-45B6-95F7-7602C53F1F21}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externaks", "Externaks", "{5783A40F-0003-4715-87F6-69F065A6CE77}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{5783A40F-0003-4715-87F6-69F065A6CE77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libHttpClient", "libHttpClient", "{F6127326-6B56-4C74-95F9-6ABB52B04EE3}"
 EndProject

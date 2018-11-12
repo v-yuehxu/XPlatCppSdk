@@ -10,8 +10,8 @@
 #include <playfab/PlayFabProfilesApi.h>
 #include <playfab/PlayFabProfilesDataModels.h>
 #include <playfab/PlayFabSettings.h>
-
 #include <playfab/QoS/PlayFabQoSApi.h>
+
 #include <iostream>
 
 static bool loginCompleted;
