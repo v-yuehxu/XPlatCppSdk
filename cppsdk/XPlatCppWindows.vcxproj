@@ -19,7 +19,7 @@
     <OutputSubDir>XPlatCppWindows</OutputSubDir>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(OutputSubDir)\</OutDir>
     <ProjectName>XPlatCppWindows</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -52,6 +52,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -72,7 +73,7 @@
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/Zc:__cplusplus /bigobj %(AdditionalOptions)</AdditionalOptions>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -81,9 +82,7 @@
     <ProjectReference />
     <ProjectReference />
     <Lib>
-      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\XPlatCppWindows;
-      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;Kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,9 +152,11 @@
     <ClInclude Include="include\playfab\QoS\QoSResult.h" />
     <ClInclude Include="include\playfab\QoS\QoSSocket.h" />
     <ClInclude Include="include\playfab\QoS\XPlatSocket.h" />
+    <ClInclude Include="libHttpClientCall.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="libHttpClientCall.cpp" />
     <ClCompile Include="source\playfab\PlayFabAdminApi.cpp" />
     <ClCompile Include="source\playfab\PlayFabClientApi.cpp" />
     <ClCompile Include="source\playfab\PlayFabLibHttpClient.cpp" />

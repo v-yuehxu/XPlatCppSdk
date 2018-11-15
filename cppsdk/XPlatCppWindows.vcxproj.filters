@@ -140,6 +140,9 @@
     <ClInclude Include="include\playfab\PlayFabLibHttpClient.h">
       <Filter>Header Files\playfab</Filter>
     </ClInclude>
+    <ClInclude Include="libHttpClientCall.h">
+      <Filter>Header Files\playfab</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -212,6 +215,9 @@
       <Filter>Source Files\playfab\QoS</Filter>
     </ClCompile>
     <ClCompile Include="source\playfab\PlayFabLibHttpClient.cpp">
+      <Filter>Source Files\playfab</Filter>
+    </ClCompile>
+    <ClCompile Include="libHttpClientCall.cpp">
       <Filter>Source Files\playfab</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,6 +8,7 @@
 #include <memory>
 #include <thread>
 #include <mutex>
+#include <atomic>
 
 #ifndef _WIN32
 #include <jsoncpp/json/value.h>
@@ -20,6 +21,30 @@
 
 namespace PlayFab
 {
+    class win32_handle
+    {
+    public:
+        win32_handle() : m_handle(nullptr)
+        {
+        }
+
+        ~win32_handle()
+        {
+            if (m_handle != nullptr) CloseHandle(m_handle);
+            m_handle = nullptr;
+        }
+
+        void set(HANDLE handle)
+        {
+            m_handle = handle;
+        }
+
+        HANDLE get() { return m_handle; }
+
+    private:
+        HANDLE m_handle;
+    };
+
     class IPlayFabLibHttpClient : public IPlayFabHttpPlugin
     {
     public:
@@ -53,20 +78,51 @@ namespace PlayFab
         PlayFabLibHttpClient(PlayFabLibHttpClient&& other) = delete;
         PlayFabLibHttpClient& operator=(PlayFabLibHttpClient&& other) = delete;
 
-        static void ExecuteRequest(CallRequestContainer& reqContainer);
-        void WorkerThread();
+        void InitializeLibHttpClient();
+        void StartBackgroundThread();
+        static DWORD WINAPI BackgroundThreadProc(LPVOID lpParam);
+        static void CALLBACK HandleAsyncQueueCallback(_In_ void* context, _In_ async_queue_handle_t queue, _In_ AsyncQueueCallbackType type);
+
+        static void CALLBACK HandleHttpCallPerformCallback(_Inout_ struct AsyncBlock* asyncBlock);
+
+        void ShutdownActiveThreads();
+
+
+        // todo sangarg : The following functions are needed once we implement a good structure to make multiple calls
+        // Once we can make multiple calls with the current MakePostRequest code, we rename 
+        // PLAYFAB_MakePostRequest -> MakePostRequest and 
+        // PLAYFAB_HandleHttpCallPerformCallback -> HandleHttpCallPerformCallback
+
+        static void SetupRequestHeader(CallRequestContainer& reqContainer, std::vector<std::vector<std::string>>& outHeaders);
+        static void PLAYFAB_MakePostRequest(CallRequestContainer& reqContainer);
+        static void CALLBACK PLAYFAB_HandleHttpCallPerformCallback(_Inout_ struct AsyncBlock* asyncBlock);
+
         static void HandleCallback(CallRequestContainer& reqContainer);
         static void HandleResults(CallRequestContainer& reqContainer);
 
-        std::thread pfHttpWorkerThread;
-        std::mutex httpRequestMutex;
+        /*std::mutex httpRequestMutex;
         bool threadRunning;
         int activeRequestCount;
         std::vector<CallRequestContainerBase*> pendingRequests;
-        std::vector<CallRequestContainerBase*> pendingResults;
+        std::vector<CallRequestContainerBase*> pendingResults;*/
 
-        static void SetupRequestHeader(CallRequestContainer& reqContainer, std::vector<std::vector<std::string>>& outHeaders);
-        static void HttpCallPerformCallback(_Inout_ struct AsyncBlock* asyncBlock);
+
+    private:
+        static async_queue_handle_t queue;
+        static registration_token_t callbackToken;
+
+        static win32_handle stopRequestedHandle;
+        static win32_handle workReadyHandle;
+        static win32_handle completionReadyHandle;
+        static win32_handle exampleTaskDone;
+
+        DWORD targetNumThreads;
+        HANDLE hActiveThreads[10];
+        DWORD defaultIdealProcessor;
+        DWORD numActiveThreads;
+
+        /*static std::atomic<int> inFlightRequestCount;
+        std::atomic<bool> acceptMoreRequests;*/
     };
 
     struct CallbackContext

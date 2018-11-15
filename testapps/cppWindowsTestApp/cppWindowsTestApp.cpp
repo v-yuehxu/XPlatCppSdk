@@ -11,8 +11,15 @@
 #include <playfab/PlayFabProfilesDataModels.h>
 #include <playfab/PlayFabSettings.h>
 #include <playfab/QoS/PlayFabQoSApi.h>
+#include <playfab/PlayFabPluginManager.h>
 
 #include <iostream>
+
+#include <httpClient\httpClient.h>
+#include <json_cpp\json.h>
+
+#pragma warning( disable : 4100)
+#pragma warning( disable : 4456)
 
 static bool loginCompleted;
 
@@ -99,6 +106,31 @@ void TestGetQosResultApi()
     }
 }
 
+std::vector<std::vector<std::string>> ExtractAllHeaders(_In_ hc_call_handle_t call)
+{
+    uint32_t numHeaders = 0;
+    HCHttpCallResponseGetNumHeaders(call, &numHeaders);
+
+    std::vector< std::vector<std::string> > headers;
+    for (uint32_t i = 0; i < numHeaders; i++)
+    {
+        const char* str;
+        const char* str2;
+        std::string headerName;
+        std::string headerValue;
+        HCHttpCallResponseGetHeaderAtIndex(call, i, &str, &str2);
+        if (str != nullptr) headerName = str;
+        if (str2 != nullptr) headerValue = str2;
+        std::vector<std::string> header;
+        header.push_back(headerName);
+        header.push_back(headerValue);
+
+        headers.push_back(header);
+    }
+
+    return headers;
+}
+
 int main()
 {
     // Super hacky short-term functionality PlayFab Test - TODO: Put the regular set of tests into proper Unit Test project
@@ -108,14 +140,20 @@ int main()
     PlayFab::ClientModels::LoginWithCustomIDRequest request;
     request.CustomId = "test_GSDK";
     request.CreateAccount = true;
+
+    PlayFab::PlayFabClientAPI::LoginWithCustomID(request, OnLoginSuccess, OnLoginFailed);
     PlayFab::PlayFabClientAPI::LoginWithCustomID(request, OnLoginSuccess, OnLoginFailed);
 
-    while (!loginCompleted)
+    /*PlayFab::PlayFabClientAPI::LoginWithCustomID(request, OnLoginSuccess, OnLoginFailed);
+
+    PlayFab::PlayFabClientAPI::LoginWithCustomID(request, OnLoginSuccess, OnLoginFailed);
+*/
+    /*while (!loginCompleted)
     {
         Sleep(10);
     }
 
-    TestGetQosResultApi();
+    TestGetQosResultApi();*/
 
     return 0;
 }
