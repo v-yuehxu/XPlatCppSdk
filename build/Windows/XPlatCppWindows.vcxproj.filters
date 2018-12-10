@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -125,6 +125,12 @@
     <ClInclude Include="$(SdkSourceDir)\include\playfab\PlayFabPluginManager.h">
       <Filter>Header Files\playfab</Filter>
     </ClInclude>
+    <ClInclude Include="$(SdkSourceDir)\include\playfab\PlayFabTelemetryEventsApi.h">
+      <Filter>Header Files\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SdkSourceDir)\include\playfab\PlayFabTelemetryEventsDataModels.h">
+      <Filter>Header Files\playfab</Filter>
+    </ClInclude>
     <ClInclude Include="$(SdkSourceDir)\include\playfab\PlayFabEvent.h">
       <Filter>Header Files\playfab</Filter>
     </ClInclude>
@@ -229,6 +235,9 @@
     <ClCompile Include="$(SdkSourceDir)\source\playfab\PlayFabPluginManager.cpp">
       <Filter>Source Files\playfab</Filter>
     </ClCompile>
+    <ClCompile Include="$(SdkSourceDir)\source\playfab\PlayFabTelemetryEventsApi.cpp">
+      <Filter>Source Files\playfab</Filter>
+    </ClCompile>
     <ClCompile Include="$(SdkSourceDir)\source\playfab\PlayFabEvent.cpp">
       <Filter>Source Files\playfab</Filter>
     </ClCompile>
@@ -259,8 +268,5 @@
     <ClCompile Include="$(SdkSourceDir)\source\playfab\QoS\XPlatSocket.cpp">
       <Filter>Source Files\playfab\QoS</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="configWindows.json" />
   </ItemGroup>
 </Project>
