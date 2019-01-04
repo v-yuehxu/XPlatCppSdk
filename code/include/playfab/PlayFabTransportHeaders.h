@@ -1,17 +1,24 @@
+// Copyright (C) Microsoft Corporation. All rights reserved.
+// 
+// This header file is used to include headers of transport plugins supported on each platform.
+
 #pragma once
 
-#ifdef _DURANGO
+#include <playfab/PlayFabPlatformMacros.h>
+
+#ifdef PLAYFAB_PLATFORM_XBOX
 #include <playfab/PlayFabIXHR2HttpPlugin.h>
-#endif // _DURANGO
+#include <playfab/OneDSIXHR2HttpPlugin.h>
+#endif // PLAYFAB_PLATFORM_XBOX
 
-#ifdef __linux__
-#include <curl/curl.h>
+#ifdef PLAYFAB_PLATFORM_WINDOWS
+#include <playfab/PlayFabWinHttpPlugin.h>
 #include <playfab/PlayFabHttp.h>
-#endif // __linux__
+#include <playfab/OneDSWinHttpPlugin.h>
+#include <playfab/OneDSHttpPlugin.h>
+#endif // PLAYFAB_PLATFORM_WINDOWS
 
-#ifdef _WIN32
-#ifndef _DURANGO
-#include <curl/curl.h>
+#ifdef PLAYFAB_PLATFORM_LINUX
 #include <playfab/PlayFabHttp.h>
-#endif // !_DURANGO
-#endif // _WIN32
+#include <playfab/OneDSHttpPlugin.h>
+#endif // PLAYFAB_PLATFORM_LINUX
